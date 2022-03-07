@@ -4,6 +4,10 @@
 # @FileName :01-hanoi.py
 # @Email    :endliss@sina.cn
 
+'''
+汉诺塔
+'''
+
 def hanoi(n,a,b,c):
     if n > 0:
         hanoi(n-1,a,c,b)
