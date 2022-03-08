@@ -48,7 +48,7 @@ hanoi(3,'A','B','C')
 
 ------
 ### 二、常用查找与排序算法
-#### 顺序查找(Linear Search)
+#### 顺序查找(Linear Search)  时间复杂度：o(n)
 顺序查找：也叫线性查找，从列表第一个元素开始，顺序进行搜索，知道找到元素或搜索到列表最后一个元素为止。
 
 ![](imgs/linear_search.gif)
@@ -62,7 +62,7 @@ def linear_search(li,val):
          return None
 ```
 
-#### 二分查找法（binary_search）
+#### 二分查找法（binary_search） 时间复杂度：O（log2n）
 在一个已知有序队列中找出与给定关键字相同的数的具体位置。原理是分别定义三个指针low、high、mid分别指向待查元素所在范围的下界和上界以及区间的中间位置，即mid＝（low＋high）/2，让关键字与mid所指的数比较，若等则查找成功并返回mid，若关键字小于mid所指的数则high=mid-1，否则low=mid+1，然后继续循环直到找出或找不到为止。
 
 ![](imgs/binary_search.gif)
@@ -82,8 +82,23 @@ def binary_search(li,val):
     else:
         return None
 ````
+### 排序
+#### 冒泡排序（Bubble Sort) 时间复杂度：o(n*n)
+ - 比较相邻的元素。如果第一个比第二个大，就交换他们的位置。
 
+![](imgs/bubblesort.gif)
 
+```python
+def bubble_sort(li):
+    for i in range(len(li) - 1):    #第i躺
+        exchange = False
+        for j in range(len(li) - i -1):
+            if li[j] > li[j+1]:
+                li[j],li[j+1] = li[j+1],li[j]   #交换位置
+                exchange = True
+        if not exchange:
+            return
+```
 
 
 
