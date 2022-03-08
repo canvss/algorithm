@@ -1,4 +1,4 @@
-# 数据结构+算法
+# 算法&数据结构
 ### 时间复杂度
 是指执行当前算法所消耗的时间。
 ### 空间复杂度
@@ -129,4 +129,34 @@ def insert_sort(li):
             li[j+1] = li[j]
             j -= 1
         li[j+1] = tmp
+```
+
+#### 快速排序(Quicksort) 时间复杂度：o(N*log2N)
+快速排序，又称划分交换排序（partition-exchange sort），简称快排，一种排序算法，最早由东尼·霍尔提出。在平均状况下，排序n个项目要O(n log2 n)（大O符号）次比较。在最坏状况下则需要 O(n^2)次比较，但这种状况并不常见。事实上，快速排序 (n log n)通常明显比其他算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地达成。
+
+![](imgs/quicksort.gif)
+
+快速排序思路：
+   - 取一个元素p(第一个元素)，使元素p归位
+   - 列表被p分成两部分，左边都比p小，右边都比p大
+   - 递归完成排序
+
+```python
+def partition(li, left, right):
+    tmp = li[left]
+    while left < right:
+        while left < right and li[right] >= tmp:    #从右边开始找比tmp小的数
+            right -= 1  #向左走一步
+        li[left] = li[right]    #把右边小于tmp的值写到左边空位上
+        while left < right and li[left] <= tmp:     #从左边开始找比tmp大的数
+            left += 1  #向右走一步
+        li[right] = li[left]    #把左边大于tmp的值写到左边空位上
+    li[left] = tmp  #将tmp归位
+    return left
+
+def quick_sort(li, left, right):
+    if left < right:
+        mid = partition(li,left,right)
+        quick_sort(li, left, mid-1)
+        quick_sort(li, mid+1,right)
 ```
