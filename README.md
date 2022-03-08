@@ -100,6 +100,18 @@ def bubble_sort(li):
             return
 ```
 
+#### 选择排序（Selection sort）时间复杂度：O(n^2)
+首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。
 
+![](imgs/selection-sort.gif)
 
+```python
+def selection_sort(li):
+    for i in range(len(li)-1):    #第i趟
+        min_loc = i
+        for j in range(i+1,len(li)):
+            if li[j] < li[min_loc]:
+                min_loc = j     #将最小值赋值给min_loc
+        li[min_loc] , li[i] = li[i] , li[min_loc]   #待排序区域最小值放到元素开始下标
+```
 
