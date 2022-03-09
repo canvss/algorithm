@@ -1,4 +1,4 @@
-![](imgs/img_1.png)
+![](imgs/img.png)
 
 # 算法&数据结构
 ### 时间复杂度（Time complexity）
