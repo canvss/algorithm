@@ -132,7 +132,7 @@ def insert_sort(li):
 ```
 
 #### 快速排序(Quicksort) 时间复杂度：o(N*logN)
-快速排序，又称划分交换排序（partition-exchange sort），简称快排，一种排序算法，最早由东尼·霍尔提出。在平均状况下，排序n个项目要O(n log2 n)（大O符号）次比较。在最坏状况下则需要 O(n^2)次比较，但这种状况并不常见。事实上，快速排序 (n log n)通常明显比其他算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地达成。
+快速排序，又称划分交换排序（partition-exchange sort），简称快排，一种排序算法，最早由东尼·霍尔提出。在平均状况下，排序n个项目要O(n log2 n)次比较。在最坏状况下则需要 O(n^2)次比较，但这种状况并不常见。事实上，快速排序 (n log n)通常明显比其他算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地达成。
 
 ![](imgs/quicksort.gif)
 
@@ -160,3 +160,11 @@ def quick_sort(li, left, right):
         quick_sort(li, left, mid-1)
         quick_sort(li, mid+1,right)
 ```
+
+![](imgs/quick_sort2.png)
+
+快速排序的最坏情况
+ - 列表已按相同顺序排序
+ - 列表已按相反顺序排序
+ - 所有元素都相同（情况1和情况2的特例）
+解决办法：随机选取中心轴下标。
