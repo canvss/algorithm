@@ -131,7 +131,7 @@ def insert_sort(li):
         li[j+1] = tmp
 ```
 
-#### 快速排序(Quicksort) 时间复杂度：o(N*log2N)
+#### 快速排序(Quicksort) 时间复杂度：o(N*logN)
 快速排序，又称划分交换排序（partition-exchange sort），简称快排，一种排序算法，最早由东尼·霍尔提出。在平均状况下，排序n个项目要O(n log2 n)（大O符号）次比较。在最坏状况下则需要 O(n^2)次比较，但这种状况并不常见。事实上，快速排序 (n log n)通常明显比其他算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地达成。
 
 ![](imgs/quicksort.gif)
