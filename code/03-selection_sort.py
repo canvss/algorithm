@@ -16,7 +16,6 @@ def select_sort(li):
                 min_loc = j     #将最小值赋值给min_loc
         li[min_loc] , li[i] = li[i] , li[min_loc]   #待排序区域最小值放到元素开始下标
 
-
 li = [5,7,2,6,9,1,4,8,3]
 select_sort(li)
 print(li)

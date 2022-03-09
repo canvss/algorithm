@@ -4,7 +4,6 @@
 '''
     快速排序
 '''
-from cal_time import *
 
 def partition(li, left, right):
     tmp = li[left]
