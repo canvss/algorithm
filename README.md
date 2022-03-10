@@ -186,7 +186,7 @@ def quick_sort(li, left, right):
  - 除了根节点以外，每个子节点又可以分为多个不相交的子树
 
 ##### 常见的特殊的树
-###### 二叉树（Binary tree）
+##### 二叉树（Binary tree）
 二叉树是指树中节点的度不大于2(两个子树)的有序树
 
 ![](imgs/Figure-A7-Binary-tree-data-generating-structure-Note-that-the-tree-data-structure-is.png)
