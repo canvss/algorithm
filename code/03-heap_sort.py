@@ -32,7 +32,6 @@ def heap_sort(li):
     # 构建堆
     for i in range((n-2)//2,-1,-1): #i表示建堆时部分根下标
         sift(li,i,n-1)  #将堆的最后一个元素作为high
-    print(li)
     for i in range(n-1 ,-1 ,-1):    #i指当前堆的最后一个元素
         li[i] ,li[0] = li[0] ,li[i] #把当前堆顶和堆的最后一个元素交换位置
         sift(li ,0 ,i - 1)
