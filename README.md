@@ -329,3 +329,54 @@ def heap_topk(li,k):
     # 出数
     return heap
 ```
+
+### 归并排序 
+- 时间复杂度o(n*logn) 
+- 空间复杂度o(n)
+归并排序（英语：Merge sort，或mergesort），是创建在归并操作上的一种有效的排序算法。1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。
+
+归并排序思路：
+- 分解
+- 排序
+- 归并
+
+#### 归并（将两个有序列表，归并成一个有序的列表）
+
+![](imgs/merge.webp)
+
+```python
+def merge(li ,low ,mid ,high):
+    i = low
+    j = mid+1
+    ltmp = []   # 用于临时存放排序好的列表
+    # 左右两边都有数
+    while i <= mid and j <= high:   # 如果左边部分小于mid并且右边部分小于high
+        if li[i] < li[j]:   # 选出左右两边小的值
+            ltmp.append(li[i])  # 将左边值添加到新的列表
+            i += 1  # 将下标往后移动
+        else:
+            ltmp.append(li[j])
+            j += 1
+    # 有可能右边没数，但左边还有数
+    while i <= mid:
+        ltmp.append(li[i])
+        i += 1
+    # 有可能左边没数，但右边还有数
+    while j <= high:
+        ltmp.append(li[j])
+        j += 1
+    li[low:high+1] = ltmp
+```
+#### 归并排序实现
+归并排序的核心思想其实很简单，如果要排序一个列表，我们先把列表从中间分成前后两部分，然后分别对前后两部分进行排序，再将排好序的两部分数据合并在一起就可以了。
+
+![](imgs/merge_sort.png)
+
+```python
+def merge_sort(li ,low ,high):
+    if low < high:      #至少有两个数
+        mid = (low + high)//2
+        merge_sort(li,low,mid)
+        merge_sort(li,mid+1,high)
+        merge(li ,low ,mid ,high)
+```
