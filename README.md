@@ -380,3 +380,31 @@ def merge_sort(li ,low ,high):
         merge_sort(li,mid+1,high)
         merge(li ,low ,mid ,high)
 ```
+
+### 希尔排序
+希尔排序(Shell's Sort)是插入排序的一种又称“缩小增量排序”（Diminishing Increment Sort），是直接插入排序算法的一种更高效的改进版本。希尔排序是非稳定排序算法。
+
+希尔排序的基本思想是：先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中的记录"基本有序"时，再对全体记录进行依次直接插入排序。
+
+![](imgs/shell_sort.gif)
+
+```python
+import random
+from cal_time import *
+
+def insertion_sort_gap(li ,gap):
+    for i in range(gap,len(li)):
+        tmp = li[i]
+        j = i - gap
+        while j >= 0 and li[j] > tmp:
+            li[j+gap] = li[j]
+            j -= gap
+        li[j+gap] = tmp
+
+@cal_time
+def shell_sort(li):
+    d =len(li) // 2
+    while d >= 1:
+        insertion_sort_gap(li,d)
+        d //= 2
+```
