@@ -458,10 +458,7 @@ def bucket_sort(li ,n=100 ,max_num=10000):
 
 基数排序的方式可以采用LSD（Least significant digital）或MSD（Most significant digital），LSD的排序方式由键值的最右边开始，而MSD则相反，由键值的最左边开始。
 
-
 ![](imgs/radix_sort.png)
-
-<center>基数排序过程</center>
 
 ```python
 def radix_sort(li):
@@ -484,6 +481,25 @@ def radix_sort(li):
         it += 1
 ```
 
+### 查找排序练习
+#### [两数之和](https://leetcode-cn.com/problems/two-sum/)
+给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
+
+你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
+
+你可以按任意顺序返回答案。
+
+```python
+class two_Sum:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        li =[]
+        for i in range(len(nums)):
+            for j in range(i+1,len(nums)):
+                if nums[j]+nums[i] == target:
+                    li.append(j)
+                    li.append(i)
+                    return li
+```
 
 
 
