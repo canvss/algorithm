@@ -427,10 +427,29 @@ def count_sort(li,max_count=100):
             li.append(i)
 ```
 
+### 桶排序（Bucket Sort）
+桶排序 (Bucket sort)或所谓的箱排序，是一个排序算法，工作的原理是将数组分到有限数量的桶子里。每个桶子再个别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排序）。桶排序是鸽巢排序的一种归纳结果。当要被排序的数组内的数值是均匀分配的时候，桶排序使用线性时间（Θ（n））。但桶排序并不是 比较排序，他不受到 O(n log n) 下限的影响。
 
+![](imgs/bucket_sort.gif)
+```python
+def bucket_sort(li ,n=100 ,max_num=10000):
+    buckets=[[] for _ in range(n)]  #创建桶
+    for var in li:
+        i = min(var//(max_num//n),n-1)
+        buckets[i].append(var) #往对应的桶添加数据
+        # 保持桶里的顺序
+        for j in range(len(buckets[i])-1 ,0 ,-1):
+            if buckets[i][j] < buckets[i][j-1]:
+                buckets[i][j-1],buckets[i][j] = buckets[i][j],buckets[i][j-1]
 
-
-
+            else:
+                break
+    sort_li = []
+    # 将所有桶放到sort_li 列表
+    for buc in buckets:
+        sort_li.extend(buc) #将这个列表数据添加到sort_li列表中
+    return sort_li
+```
 
 
 
