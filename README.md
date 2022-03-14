@@ -458,12 +458,10 @@ def bucket_sort(li ,n=100 ,max_num=10000):
 
 基数排序的方式可以采用LSD（Least significant digital）或MSD（Most significant digital），LSD的排序方式由键值的最右边开始，而MSD则相反，由键值的最左边开始。
 
-<div>
 
 ![](imgs/radix_sort.png)
-<center>基数排序过程</center>
-</div>
 
+<center>基数排序过程</center>
 
 ```python
 def radix_sort(li):
