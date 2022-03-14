@@ -451,13 +451,36 @@ def bucket_sort(li ,n=100 ,max_num=10000):
     return sort_li
 ```
 
+### 基数排序(英语：Radix sort)
+基数排序是一种非比较型整数排序算法，其原理是将整数按位数切割成不同的数字，然后按每个位数分别比较。由于整数也可以表达字符串（比如名字或日期）和特定格式的浮点数，所以基数排序也不是只能使用于整数。
 
+它是这样实现的：将所有待比较数值（正整数）统一为同样的数位长度，数位较短的数前面补零。然后，从最低位开始，依次进行一次排序。这样从最低位排序一直到最高位排序完成以后，数列就变成一个有序序列。
 
+基数排序的方式可以采用LSD（Least significant digital）或MSD（Most significant digital），LSD的排序方式由键值的最右边开始，而MSD则相反，由键值的最左边开始。
 
+![](imgs/radix_sort.png)
+<center>基数排序过程</center>
 
+```python
+def radix_sort(li):
+    max_num = max(li)
+    it =0
+    # 10的it次方
+    while 10 ** it <= max_num:
+        buckets = [[] for _ in range(10)]
+        # 1、把对应的数据放到对应的桶
+        for var in li:
+            # max_num = 974；取十位，it=1，974//10 --> 97 % 10 -->7
+            digit = (var//10 ** it) % 10
+            buckets[digit].append(var)
 
-
-
+        # 2、将原来的li列表清空
+        li.clear()
+        # 3、将新的列表放回li列表
+        for buc in buckets:
+            li.extend(buc)
+        it += 1
+```
 
 
 
