@@ -1,6 +1,6 @@
-![](imgs/PythonDataStructuresandAlgorithms.png)
+![](imgs/img.png)
 
-# 算法
+# 算法&数据结构
 ### 时间复杂度（Time complexity)
 在计算机科学中，算法的时间复杂度（Time complexity）是一个函数，它定性描述该算法的运行时间。
 ### 空间复杂度(Space Complexity)
@@ -35,7 +35,7 @@ def recursion2(i):
 ### 汉诺塔
    法国数学家爱德华·卢卡斯曾编写过一个印度的古老传说：在世界中心贝拿勒斯（在印度北部）的圣庙里，一块黄铜板上插着三根宝石针。印度教的主神梵天在创造世界的时候，在其中一根针上从下到上地穿好了由大到小的64片金片，这就是所谓的汉诺塔。不论白天黑夜，总有一个僧侣在按照下面的法则移动这些金片：一次只移动一片，不管在哪根针上，小片必须在大片上面。僧侣们预言，当所有的金片都从梵天穿好的那根针上移到另外一根针上时，世界就将在一声霹雳中消灭，而梵塔、庙宇和众生也都将同归于尽。
 
-![](imgs/hanoi.gif)
+![](imgs/hanoi2.gif)
 
  - 1、把n-1个盘子从a通过c移动到b
  - 2、把第n个盘从a移动到c
@@ -501,7 +501,73 @@ class two_Sum:
                     return li
 ```
 
-# 数据结构
+![](imgs/Data_Structures.png)
+
+## 常用数据结构
+数据结构是指相互之间存在着一种或多种关系的数据元素的集合和该集合中数据元素之间的关系组成。
+
+简单的来说，数据结构就是设计数据以任何一种方式组织并存储在计算机中。比如：列表、集合与字典等都是一种数据结构。
+
+N.Wirth："程序=数据结构+算法"
+
+### 数据结构的分类
+数据结构按照其逻辑结构可分为线性结构、树结构、图结构
+- 线性结构：数据结构中的元素存在一对一的互相关系
+- 树结构：数据结构的元素存在一对多的相互关系
+- 图结构：数据结构中的元素存在多对多的相互关系
+
+### 栈
+栈(Stack)是一个数据集合，可以理解为只能在一端进行插入或删除操作的列表。
+
+栈的特点：后进先出LIFO(last-in,first-out)
+
+栈的概念：栈顶、栈底
+
+栈额基本操作：
+- 进栈：push
+- 出栈：pop
+- 取栈顶：gettop
+
+#### 栈的实现
+使用一般的列表结构即可实现栈
+
+![](imgs/stack.gif)
+
+```python
+class Stack:
+
+    def __init__(self):
+        self.stack = []
+
+    def push(self, element):
+        self.stack.append(element)
+
+    def pop(self):
+        return self.stack.pop()
+
+    def get_top(self):
+        if len(self.stack) > 0:
+            return self.stack[-1]
+        else:
+            return None
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
