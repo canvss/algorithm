@@ -659,10 +659,28 @@ class Queue:
         return self.front == (self.rear + 1) % self.size
 ```
 
+#### 双向队列
+双向队列的两端都支持进队和出队操作
 
+##### Python队列内置模块
+使用方法：from collections import deque 
 
+双向队列的基本操作：
+- 队首进队   append()
+- 队首出队   popleft()
+- 队尾进队   applendleft()
+- 队尾出队   pop()
 
-
+使用deque实现读取文件后n行
+```python
+from collections import deque
+def tail(n):
+    with open('tail.txt', 'r') as f:
+        q = deque(f,n)
+        return q
+for line in tail(4):
+    print(line,end='')
+```
 
 
 
