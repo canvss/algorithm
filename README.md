@@ -241,7 +241,7 @@ def quick_sort(li, left, right):
 - 若想将其调整为小堆，那么根结点的左右子树必须都为小堆。
 - 若想将其调整为大堆，那么根结点的左右子树必须都为大堆。
 
-![](imgs/heap_down.jpeg)
+![](imgs/heap-down.gif)
 
 ```python
 def sift(li,low,high):
