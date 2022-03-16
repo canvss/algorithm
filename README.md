@@ -270,8 +270,7 @@ def sift(li,low,high):
 - 将最后一个元素和堆顶交换位置，每次将最后一个元素向前移动一位
 - 做堆的向下调整
 
-![](imgs/min-binary-heap-extract-min.gif)
-
+![](imgs/heap_sort.gif)
 ```python
 def heap_sort(li):
     n = len(li)
@@ -295,6 +294,7 @@ def heap_sort(li):
   - 遍历列表所有元素后，倒序弹出堆顶
 
 ```python
+# 构建小根堆
 def sift(li,low,high):
     i = low
     j = 2 * i +1
