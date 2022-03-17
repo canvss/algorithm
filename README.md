@@ -682,9 +682,60 @@ for line in tail(4):
     print(line,end='')
 ```
 
+### 栈和队列的应用--迷宫问题
+给一个二维列表，表示迷宫(0表示通道，1表示围墙)。给出算法，求出一条走出迷宫的路径。
 
+![](imgs/Labyrinth.png)
 
+#### 栈--深度优先搜索
+- 回溯法
+- 思路：从一个节点开始，任意找下一个能走的点，当找不到能走的点时，退回上一个点寻找是否有其他方向的点。
+- 使用栈存储当前路径
 
+```python
+maze = [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 1, 0, 0, 0, 1, 0, 1],
+    [1, 0, 0, 1, 0, 0, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 1, 1, 0, 0, 1],
+    [1, 0, 1, 1, 1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+    [1, 0, 1, 0, 0, 0, 1, 0, 0, 1],
+    [1, 0, 1, 1, 1, 0, 1, 1, 0, 1],
+    [1, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+]
 
+dirs = [
+    lambda x,y: (x+1,y),    # 向上走
+    lambda x,y: (x-1,y),    # 向下走
+    lambda x,y: (x,y-1),    # 向左走
+    lambda x,y: (x,y+1)     # 向右走
+]
 
+# (x1, y1)代表起点；(x2, y2)代表终点
+def maze_path(x1 ,y1 ,x2 ,y2):
+    stack = [(x1,y1)]
+    while (len(stack)) > 0:
+        curNode = stack[-1] #把当前节点存起来
+        # 如果当前节点的x，y 等于 终点节点x，y说明已经到达终点
+        if curNode[0] == x2 and curNode[1] ==y2:
+            for s in stack:
+                print(s)
+            print(len(stack))
+            return True
 
+        for dir in dirs:
+            nextNode = dir(curNode[0],curNode[1])
+            # 如果下一个节点为0 说明可以走
+            if maze[nextNode[0]][nextNode[1]] == 0:
+                stack.append(nextNode)
+                maze[nextNode[0]][nextNode[1]] = 2  #将走过的节点标识为2
+                break
+
+        #当上下左右都走不通时，就往回走
+        else:
+            stack.pop() 
+    else:
+        return False
+```
