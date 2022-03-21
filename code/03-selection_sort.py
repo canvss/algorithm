@@ -3,7 +3,6 @@
 # @Author   :Stephen•Liu
 # @FileName :03-selection_sort.py
 # @Email    :endliss@sina.cn
-
 '''
     选择排序
 '''
