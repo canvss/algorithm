@@ -866,3 +866,25 @@ def delete_node(lk, value):
         tmp = lk
         lk = lk.next
 ```
+#### 双向链表
+双链表的每个节点有两个指针：一个指向后一个节点，另一个指向前一个节点。
+
+![](imgs/double_linked_list.png)
+
+```python
+class Node:
+    def __init__(self, item):
+        self.item = item
+        self.next = None
+        self.prior = None
+        
+def create_linked_list(li):
+    head = Node(li[0])
+    tail = head
+    for element in li[1:]:
+        node = Node(element)
+        node.prior = tail
+        tail.next = node
+        tail = tail.next
+    return head
+```
