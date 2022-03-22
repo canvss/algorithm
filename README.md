@@ -798,3 +798,39 @@ def deque_maze_path(x1 ,y1 ,x2 ,y2):
         print('没有路！')
         return False
 ```
+
+### 链表
+链表是由一系列节点组成的元素集合。每个节点包含两部分，数据域item和指向下一个节点的指针next。通过节点之间的互相连接，最终串联成一个链表。
+
+![](imgs/linked_list.png)
+
+#### 创建链表
+- 头插法
+
+![](imgs/linklist_head.png)
+
+```python
+def create_linklist_head(li):
+    head = Node(li[0])
+    for element in li[1:]:
+        node = Node(element)
+        node.next = head
+        head = node
+    return head
+```
+
+- 尾插法
+
+![](imgs/linked_list_tail.png)
+
+```python
+def create_linklist_tail(li):
+    head = Node(li[0])
+    tail = head
+    for element in li[1:]:
+        node = Node(element)
+        tail.next = node
+        tail = node
+    return head
+```
+
