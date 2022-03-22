@@ -834,3 +834,35 @@ def create_linklist_tail(li):
     return head
 ```
 
+#### 链表的插入和删除
+
+![](imgs/linked_list_insert.png)
+
+```python
+# 查找到链表中值的对象
+def select_node(lk, value):
+    while lk:
+        if lk.item == value:
+            return lk
+        lk = lk.next
+
+# 向链表中插入新的对象
+def insert_node(val_lk, node):
+    node.next = val_lk.next
+    val_lk.next = node
+
+
+```
+
+![](imgs/linked_list_delete.png)
+
+```python
+# 删除链表中的对象
+def delete_node(lk, value):
+    tmp = None
+    while lk:
+        if lk.item == value:
+            tmp.next = lk.next
+        tmp = lk
+        lk = lk.next
+```
