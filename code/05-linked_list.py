@@ -59,6 +59,7 @@ def delete_node(lk, value):
     while lk:
         if lk.item == value:
             tmp.next = lk.next
+            break
         tmp = lk
         lk = lk.next
 
