@@ -1014,3 +1014,45 @@ class HashTable:
 - Python字典与集合都是通过哈希表实现的
 - md5算法
 - SHA2算法
+
+### 树的概念
+#### 树的实例：模拟文件系统
+```python
+class Node:
+    def __init__(self, name, type='dir'):
+        self.name = name
+        self.type = type
+        self.children = []
+        self.parent = None
+
+    def __repr__(self):
+        return self.name
+
+
+class FileSystemTree:
+    def __init__(self):
+        self.root = Node("/")
+        self.pwd = self.root
+        
+    def mkdir(self, name):
+        if name[-1] != '/':
+            name += '/'
+        node = Node(name)
+        node.parent = self.pwd
+        self.pwd.children.append(node)
+        
+    def cd(self, name):
+        if name == '..':
+            self.pwd = self.pwd.parent
+            return
+        if name[-1] != '/':
+            name += '/'
+        for child in self.pwd.children:
+            if child.name == name:
+                self.pwd = child
+                return
+        raise ValueError('找不到目录...')
+    
+    def ls(self):
+        return self.pwd.children
+```
