@@ -1056,3 +1056,90 @@ class FileSystemTree:
     def ls(self):
         return self.pwd.children
 ```
+
+### 二叉树
+
+#### 链表实现二叉树
+
+```python
+class BinaryTreeNode:
+    def __init__(self ,data):
+        self.data = data
+        self.lchild = None
+        self.rchild = None
+
+E = BinaryTreeNode('E')
+A = BinaryTreeNode('A')
+G = BinaryTreeNode('G')
+C = BinaryTreeNode('C')
+F = BinaryTreeNode('F')
+B = BinaryTreeNode('B')
+D = BinaryTreeNode('D')
+root = E
+E.lchild = A
+E.rchild = G
+A.rchild = C
+C.rchild = D
+C.lchild = B
+G.rchild = F
+```
+
+#### 二叉树遍历
+- 前序遍历:
+
+  首先访问根节点，然后遍历左子树，最后遍历右子树。
+
+![](imgs/pre_order_traversal.gif)
+```python
+def pre_order(root):
+    if root:
+        print(root.data,end=', ')
+        pre_order(root.lchild)
+        pre_order(root.rchild)
+```
+
+
+- 中序遍历
+
+  先遍历左子树，然后访问根节点，然后遍历右子树。
+
+![](imgs/in_order_traversal.gif)
+```python
+def in_order(root):
+    if root:
+       in_order(root.lchild)
+       print(root.data, end=', ')
+       in_order(root.rchild)
+```
+
+- 后序遍历
+
+  是先遍历左子树，然后遍历右子树，最后访问树的根节点。
+
+![](imgs/post_order_traversal.gif)
+```python
+def post_order(root):
+    if root:
+        post_order(root.lchild)
+        post_order(root.rchild)
+        print(root.data, end = ', ')
+```
+
+- 层次遍历
+
+  层序遍历就是逐层遍历树结构。
+
+![](imgs/level_order_traversal.gif)
+
+```python
+def level_order(root):
+    queue = deque()
+    queue.append(root)
+    while len(queue) > 0:   # 只要队不空
+        node = queue.popleft()
+        print(node.data, end=', ')
+        if node.lchild:
+            queue.append(node.lchild)
+        if node.rchild:
+            queue.append(node.rchild)
+```
