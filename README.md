@@ -1145,3 +1145,49 @@ def level_order(root):
         if node.rchild:
             queue.append(node.rchild)
 ```
+
+### 二叉搜索树
+二叉查找树（Binary Search Tree），（又：二叉搜索树，二叉排序树）它或者是一棵空树，或者是具有下列性质的二叉树： 若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子树也分别为二叉排序树。二叉搜索树作为一种经典的数据结构，它既有链表的快速插入与删除操作的特点，又有数组快速查找的优势；所以应用十分广泛，例如在文件系统和数据库系统一般会采用这种数据结构进行高效率的排序与检索操作。
+
+![](imgs/bst.png)
+
+- 二叉搜索树 -- 插入
+
+  二叉搜索树中的新节点总是添加到叶子位置。执行搜索可以轻松找到新节点的位置。
+
+![](imgs/bst_insert.png)
+
+```python
+    def insert(self, node, val):
+        if not node: 
+            node = TreeNode(val)
+            return node
+        elif node.data < val: 
+            node.rchild = self.insert(node.rchild, val)
+            node.rchild.parent = node
+        elif node.data > val: 
+            node.lchild = self.insert(node.lchild, val)
+            node.lchild.parent = node
+        return node
+``` 
+- 二叉搜索树 -- 查询
+  - 从树的根节点开始
+  - 如果值小于当前节点，左移
+  - 如果值大于当前节点，向右移动
+  
+![](imgs/bst_query.png)
+```python
+    def query(self, node, val):
+        if not node:    # 判断空树
+            return None
+        if node.data == val:
+            return node
+        elif node.data > val:
+            return self.query(node.lchild, val)
+        elif node.data < val:
+            return self.query(node.rchild, val)
+        else:
+            return None
+```
+
+- 二叉搜索树 -- 删除
