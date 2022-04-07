@@ -18,7 +18,7 @@ class BST:
 
     # 递归查询
     def query(self, node, val):
-        if not node:    # 判断空树
+        if not node:  # 判断空树
             return None
         if node.data == val:
             return node
@@ -39,7 +39,7 @@ class BST:
                 p = p.lchild
             elif p.data < val:
                 p = p.rchild
-        return None     # 树空
+        return None  # 树空
 
     # 递归插入
     def insert(self, node, val):
@@ -78,6 +78,58 @@ class BST:
             else:
                 return
 
+    def __remove_node_leaf(self, node):
+        # 情况1：node是叶子节点
+        if not node.parent:  # node为根节点
+            self.root = None
+        if node.parent.lchild == node:  # node是左孩子
+            node.parent.lchild = None
+        else:  # node是右孩子
+            node.parent.rchild = None
+
+    def __remove_node_lchild(self, node):
+        # node只有一个左孩子
+        if not node.parent:  # node是根节点
+            self.root = node.lchild
+        elif node.parent.lchild == node:  # node是左孩子
+            node.parent.lchild = node.lchild
+            node.lchile.parent = node.parent
+        else:  # node是右孩子
+            node.parent.rchild = node.lchild
+            node.lchile.parent = node.parent
+
+    def __remove_node_rchild(self, node):
+        # node只有一个右孩子
+        if not node.parent:
+            self.root = node.rchild
+        elif node == node.parent.lchild:
+            node.parent.lchild = node.rchild
+            node.rchild.parent = node.parent
+        else:
+            node.parent.rchild = node.rchild
+            node.rchild.parent = node.parent
+
+    def delete(self, val):
+        if self.root:  # 树不空
+            node = self.query_no_rec(val)
+            if not node:
+                return False
+            if not node.lchild and not node.rchild:     # node是根节点
+                self.__remove_node_leaf(node)
+            elif not node.rchild:       # node只有一个左孩子
+                self.__remove_node_lchild(node)
+            elif not node.lchild:       # node只有一个右孩子
+                self.__remove_node_rchild(node)
+            else:
+                min_node = node.rchild
+                while min_node.lchild:     # 拿到右子树中最小的节点
+                    min_node = min_node.lchild
+                node.data = min_node.data   # 将右子树最小节点覆盖当前node
+                if min_node.rchild:     # 只有右孩子
+                    self.__remove_node_rchild(min_node)
+                else:   # 叶子节点
+                    self.__remove_node_leaf(min_node)
+
     def pre_order(self, root):
         if root:
             print(root.data, end=', ')
@@ -104,3 +156,9 @@ print()
 tree.in_order(tree.root)
 print()
 print(tree.query_no_rec(1))
+
+tree.delete(5)
+tree.in_order(tree.root)
+print()
+tree.delete(10)
+tree.in_order(tree.root)

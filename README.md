@@ -1146,8 +1146,9 @@ def level_order(root):
             queue.append(node.rchild)
 ```
 
-### 二叉搜索树
+### 二叉搜索树 
 二叉查找树（Binary Search Tree），（又：二叉搜索树，二叉排序树）它或者是一棵空树，或者是具有下列性质的二叉树： 若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子树也分别为二叉排序树。二叉搜索树作为一种经典的数据结构，它既有链表的快速插入与删除操作的特点，又有数组快速查找的优势；所以应用十分广泛，例如在文件系统和数据库系统一般会采用这种数据结构进行高效率的排序与检索操作。
+平均情况下，二叉搜索树进行搜索的时间复杂度（O(lgn)）。
 
 ![](imgs/bst.png)
 
@@ -1191,3 +1192,76 @@ def level_order(root):
 ```
 
 - 二叉搜索树 -- 删除
+  - 如果要删除的节点是叶子节点
+  
+     操作方法：直接删除
+
+  ![](imgs/bst_delete-01.png)
+
+```python
+    def __remove_node_leaf(self, node):
+        # 情况1：node是叶子节点
+        if not node.parent:  # node为根节点
+            self.root = None
+        if node.parent.lchild == node:  # node是左孩子
+            node.parent.lchild = None
+        else:  # node是右孩子
+            node.parent.rchild = None
+```
+  - 如果要删除的节点只有一个孩子
+  
+     操作方法：将此节点的父亲与孩子连接，然后删除该节点
+  
+  ![](imgs/bst_delete-02.png)
+
+```python
+    def __remove_node_lchild(self, node):
+        # node只有一个左孩子
+        if not node.parent:  # node是根节点
+            self.root = node.lchild
+        elif node.parent.lchild == node:  # node是左孩子
+            node.parent.lchild = node.lchild
+            node.lchile.parent = node.parent
+        else:  # node是右孩子
+            node.parent.rchild = node.lchild
+            node.lchile.parent = node.parent
+
+    def __remove_node_rchild(self, node):
+        # node只有一个右孩子
+        if not node.parent:
+            self.root = node.rchild
+        elif node == node.parent.lchild:
+            node.parent.lchild = node.rchild
+            node.rchild.parent = node.parent
+        else:
+            node.parent.rchild = node.rchild
+            node.rchild.parent = node.parent
+```
+  - 如果要删除的节点有两个孩子
+  
+     操作方法：将其右子树最小节点删除，替换到当前节点
+
+  ![](imgs/bst_delete-03.png)
+
+```python
+    def delete(self, val):
+        if self.root:  # 树不空
+            node = self.query_no_rec(val)
+            if not node:
+                return False
+            if not node.lchild and not node.rchild:     # node是根节点
+                self.__remove_node_leaf(node)
+            elif not node.rchild:       # node只有一个左孩子
+                self.__remove_node_lchild(node)
+            elif not node.lchild:       # node只有一个右孩子
+                self.__remove_node_rchild(node)
+            else:
+                min_node = node.rchild
+                while min_node.lchild:     # 拿到右子树中最小的节点
+                    min_node = min_node.lchild
+                node.data = min_node.data   # 将右子树最小节点覆盖当前node
+                if min_node.rchild:     # 只有右孩子
+                    self.__remove_node_rchild(min_node)
+                else:   # 叶子节点
+                    self.__remove_node_leaf(min_node)
+```
