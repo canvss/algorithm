@@ -1272,7 +1272,7 @@ def level_order(root):
   - 随机优化插入
   - AVL树
 
-### AVl树
+### AVL树
 AVL树是一颗自平衡的二叉搜索树。
 
 AVL树具有一下性质：
