@@ -30,4 +30,14 @@ def cut2(p, n):
     return cut_rod_rec_2(p, n)
 
 
-print(cut2(p, 20))
+def cut_rod_dp(p ,n):
+    r = [0]
+    for i in range(1, n+1):
+        res = 0
+        for j in range(1, i+1):
+            res = max(res, r[i-j]+p[j])
+        r.append(res)
+    return r[n]
+
+
+print(cut_rod_dp(p, 20))
