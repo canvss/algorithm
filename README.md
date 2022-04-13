@@ -1478,8 +1478,22 @@ def fibnacci_no_rec(n):
   - 递推式简化为![img.png](imgs/dynamic-prigramming_steel-5.png)
   - 不做切割的方案就可以描述为：左边一段长度为n，收益为pn，剩余一段长度为0，收益为r0=0
 
+**自顶向下实现**
+```python
+p = [0, 1, 5, 8, 9, 10, 17, 17, 20, 21, 23, 24, 26, 27, 27, 28, 30, 33, 36, 39, 40]
 
+def cut_rod_rec(p, n):
+    res = p[n]
+    for i in range(1, n):
+        res = max(res, cut_rod_rec(p, i) + cut_rod_rec(p, n - i))
+    return res
 
+def cut_rod_rec_2(p, n):
+    res = p[n]
+    for i in range(1, n):
+        res = max(res, p[i] + cut_rod_rec_2(p, n - i))
+    return res
+```
 
 
 
