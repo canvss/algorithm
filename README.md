@@ -1473,6 +1473,7 @@ def fibnacci_no_rec(n):
 - 考察所有的i，选择其中收益最大的方案。
 
 ##### 最优子结构
+可以将求解规模为n的原问题，划分为规模更小的子问题：
 - 钢条切割问题还存在更简单的递归求解方法
   - 从钢条的左边切割下长度为i的一段，只对右边剩下的一段继续进行切割，左边的不在切割
   - 递推式简化为![img.png](imgs/cut_rod-5.png)
@@ -1486,13 +1487,17 @@ def fibnacci_no_rec(n):
 p = [0, 1, 5, 8, 9, 10, 17, 17, 20, 21, 23, 24, 26, 27, 27, 28, 30, 33, 36, 39, 40]
 
 def cut_rod_rec(p, n):
-    res = p[n]
+    if n == 0:
+      return 0
+    res = 0
     for i in range(1, n):
         res = max(res, cut_rod_rec(p, i) + cut_rod_rec(p, n - i))
     return res
 
 def cut_rod_rec_2(p, n):
-    res = p[n]
+    if n == 0:
+      return 0
+    res = 0
     for i in range(1, n):
         res = max(res, p[i] + cut_rod_rec_2(p, n - i))
     return res
@@ -1515,6 +1520,107 @@ def cut_rod_dp(p ,n):
     return r[n]
 ```
 
+**重构解**
+- 输出最优切割方案
 
+![](imgs/cut_rod-6.png)
 
+```python
+def cut_rod_extent(p, n):
+    r = [0]     # 最优解
+    s = [0]     # 切割后左边的长度
+    for i in range(1, n+1):
+        res_r = 0
+        res_s = 0
+        for j in range(1, i+1):
+            if p[j] + r[i-j] > res_r:
+                res_r = p[j] + r[i-j]
+                res_s = j
+        r.append(res_r)
+        s.append(res_s)
+    return r[n], s
 
+def cut_rod_solution(p, n):
+    r, s = cut_rod_extent(p, n)
+    end = []
+    while n > 0:
+        end.append(s[n])
+        n -= s[n]
+    return end
+```
+
+**动态规划问题特征**
+- 最优子结构
+- 重叠子问题
+
+#### 最长公共子序列
+- 一个序列的子序列是在该序列中删去若干元素后得到的序列。例如：“ABCD”和“BDF”都是“ABCDEFG”的子序列。
+- 最长公共子序列（Longest Common Subsequence,简写LCS）问题：给定两个序列X和Y，求X和Y长度最大的公共子序列。例如：X=“ABBCBDE”, Y="DBBCDB", LCS(X,Y)="BBCD"
+
+##### 最优子结构原理
+X=<x1,x2,...,xm>和Y=<y1,y2,...,yn>为两个序列，Z=<z1,z2,...,zk>为X和Y的任意LCS。
+- 如果xm=yn，则zk=xm=yn且Zk-1是Xm-1和Yn-1的一个LCS。
+- 如果xm≠yn，那么zk≠xm意味着Z是Xm-1和Y的一个LCS。
+- 如果xm≠yn，那么zk≠yn意味着Z是X和Yn-1的一个LCS。
+
+##### 递推式
+
+![img_1.png](imgs/dp_lcs.png)
+
+```python
+def lcs_length(x, y):
+    m = len(x)
+    n = len(y)
+    c = [[0 for _ in range(n+1)] for _ in range(m+1)]
+    for i in range(1, m+1):
+        for j in range(1, n+1):
+            if x[i-1] == y[j-1]:
+                c[i][j] = c[i-1][j-1]+1
+            else:
+                c[i][j] = max(c[i-1][j],c[i][j-1])
+
+    for _ in c:
+        print(_)
+
+    return c[m][n]
+
+def lcs(x, y):
+    m = len(x)
+    n = len(y)
+    c = [[0 for _ in range(n + 1)] for _ in range(m + 1)]
+    b = [[0 for _ in range(n + 1)] for _ in range(m + 1)]  # 左上方  上方  左方
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if x[i - 1] == y[j - 1]:  # i,j位置上的字符匹配的时候，来自于左上方+1
+                c[i][j] = c[i - 1][j - 1] + 1
+                b[i][j] = 1
+            elif c[i - 1][j] >= c[i][j - 1]:  # 来自于上方(这里把等于也偏向上)
+                c[i][j] = c[i - 1][j]
+                b[i][j] = 2
+            else:  # 来自于左方
+                c[i][j] = c[i][j - 1]
+                b[i][j] = 3
+    return c[m][n], b
+
+c, b = lcs("ABCBDAB", "BDCABA")
+
+for _ in b:
+    print(_)
+
+def lcs_trackback(x,y):
+    c, b = lcs(x, y)
+    i = len(x)
+    j = len(y)
+    res = []
+    while i > 0 and j > 0:
+        if b[i][j] == 1:   # 来自左上方 -- 匹配
+            res.append(x[i-1])
+            i -= 1
+            j -= 1
+        elif b[i][j] == 2:   # 来自于上方 -- 不匹配
+            i -= 1
+        else:       # ==3,来自左方 -- 不匹配
+            j -= 1
+    print(res)
+    return "".join(reversed(res))
+```
