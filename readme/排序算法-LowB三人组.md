@@ -4,7 +4,7 @@
 ## 冒泡排序（Bubble Sort) 时间复杂度：o(n^2)
 **比较相邻的元素。如果第一个比第二个大，就交换他们的位置。**
 
-![](imgs/bubblesort.gif)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/bubblesort.gif)
 
 ```python
 def bubble_sort(li):
@@ -21,7 +21,7 @@ def bubble_sort(li):
 ## 选择排序（Selection sort）时间复杂度：O(n^2)
 **首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。**
 
-![](imgs/selection-sort.gif)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/selection-sort.gif)
 
 ```python
 def selection_sort(li):
@@ -36,7 +36,7 @@ def selection_sort(li):
 ## 插入排序（Insertion sort） 时间复杂度：o(n^2)
 **假设你在玩扑克牌，你要把牌按从小到大排列。当你拿到第一张牌，那它就是最小的，把它放在第一个位置上。当你拿到第二张牌，你和第一张牌做比较，如果它大于第一张牌，则把它放到第一张牌的右边，反之则放到左边。当你拿到第三张牌，你拿它和第二个位置上的牌比较，然后如有必要需要和第一个位置上的牌比较。然后是第四张牌……最后，一手牌就按从小到大的顺序排好了。这就是插入排序。 在其实现过程使用双层循环，外层循环对除了第一个元素之外的所有元素，内层循环对当前元素前面有序表进行待插入位置查找，并进行移动**
 
-![](imgs/insertion_sort.gif)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/insertion_sort.gif)
 
 ```python
 def insert_sort(li):

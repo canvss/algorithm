@@ -45,24 +45,24 @@ def fibnacci_no_rec(n):
 ## 钢条切割问题
 **钢条，价格与钢条长度之间的关系如下表：**
 
-![](imgs/cut_rod-1.png)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/cut_rod-1.png)
 
 **现在有一段长度为n的钢条和价格表，求收益最大方案。**
 
 - 长度为4的钢条最优方案是c
 
-![](imgs/cut_rod-2.png)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/cut_rod-2.png)
 
 - 钢条长度和价格最优关系表：
 
-![](imgs/cut_rod-3.png)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/cut_rod-3.png)
 
 
 ### 长度是n的钢条切割方案
 **递推式**
 
 - 设长度为n的钢条切割后最优收益值为rn，可以得出递推式：
-  - ![img.png](imgs/cut-rod-4.png)
+  - ![img.png](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/cut-rod-4.png)
 - 第一个参数pn表示不切割的价格
 - 其他n-1个参数分别表示另外n-1种不同切割方案，对方案i=1,2,...,n-1
   - 将钢条切割长度为i和n-i两段
@@ -74,12 +74,12 @@ def fibnacci_no_rec(n):
 可以将求解规模为n的原问题，划分为规模更小的子问题：
 - 钢条切割问题还存在更简单的递归求解方法
   - 从钢条的左边切割下长度为i的一段，只对右边剩下的一段继续进行切割，左边的不在切割
-  - 递推式简化为![img.png](imgs/cut_rod-5.png)
+  - 递推式简化为![img.png](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/cut_rod-5.png)
   - 不做切割的方案就可以描述为：左边一段长度为n，收益为pn，剩余一段长度为0，收益为r0=0
 
 #### 自顶向下实现 -- O(2^n)
 
-![](imgs/cut_rod_down.png)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/cut_rod_down.png)
 
 ```python
 p = [0, 1, 5, 8, 9, 10, 17, 17, 20, 21, 23, 24, 26, 27, 27, 28, 30, 33, 36, 39, 40]
@@ -105,7 +105,7 @@ def cut_rod_rec_2(p, n):
 
 **由于每次都是直接取之前存好的值。**
 
-![](imgs/cut_rod_up.png)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/cut_rod_up.png)
 
 ```python
 def cut_rod_dp(p ,n):
@@ -122,7 +122,7 @@ def cut_rod_dp(p ,n):
 
 - 输出最优切割方案
 
-![](imgs/cut_rod-6.png)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/cut_rod-6.png)
 
 ```python
 def cut_rod_extent(p, n):
@@ -166,7 +166,7 @@ X=<x1,x2,...,xm>和Y=<y1,y2,...,yn>为两个序列，Z=<z1,z2,...,zk>为X和Y的
 
 ### 递推式
 
-![](imgs/dp_lcs.png)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/dp_lcs.png)
 
 ```python
 def lcs_length(x, y):

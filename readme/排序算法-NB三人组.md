@@ -2,7 +2,7 @@
 
 **快速排序，又称划分交换排序（partition-exchange sort），简称快排，一种排序算法，最早由东尼·霍尔提出。在平均状况下，排序n个项目要O(n log2 n)次比较。在最坏状况下则需要 O(n^2)次比较，但这种状况并不常见。事实上，快速排序 (n log n)通常明显比其他算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地达成。**
 
-![](imgs/Quicksort_img.gif)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/Quicksort_img.gif)
 
 ### 快速排序思路：
 
@@ -30,7 +30,7 @@ def quick_sort(li, left, right):
         quick_sort(li, mid+1,right)
 ```
 
-![](imgs/quick_sort2.png)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/quick_sort2.png)
 
 ### 快速排序的最坏情况
 
@@ -49,7 +49,7 @@ def quick_sort(li, left, right):
 - 大根堆：一颗完全二叉树，满足任一节点都比其孩子节点大
 - 小根堆：一颗完全二叉树，满足任一节点都比其孩子节点小
 
-![](imgs/heap.png)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/heap.png)
 
 ### 堆的向下调整
 
@@ -58,7 +58,7 @@ def quick_sort(li, left, right):
 - 若想将其调整为小堆，那么根结点的左右子树必须都为小堆。
 - 若想将其调整为大堆，那么根结点的左右子树必须都为大堆。
 
-![](imgs/heap-down.gif)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/heap-down.gif)
 
 ```python
 def sift(li,low,high):
@@ -87,7 +87,7 @@ def sift(li,low,high):
 - 将最后一个元素和堆顶交换位置，每次将最后一个元素向前移动一位
 - 做堆的向下调整
 
-![](imgs/heap_sort.gif)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/heap_sort.gif)
 ```python
 def heap_sort(li):
     n = len(li)
@@ -165,7 +165,7 @@ def heap_topk(li,k):
 
 **将两个有序列表，归并成一个有序的列表**
 
-![](imgs/merge.webp)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/merge.webp)
 
 ```python
 def merge(li ,low ,mid ,high):
@@ -194,7 +194,7 @@ def merge(li ,low ,mid ,high):
 
 **归并排序的核心思想其实很简单，如果要排序一个列表，我们先把列表从中间分成前后两部分，然后分别对前后两部分进行排序，再将排好序的两部分数据合并在一起就可以了。**
 
-![](imgs/merge_sort.png)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/merge_sort.png)
 
 ```python
 def merge_sort(li ,low ,high):

@@ -1,7 +1,7 @@
 # 队列(Queue)
 **队列是一个数据集合，仅允许在列表的一端进行插入，另一端进行删除。**
 
-![](imgs/queue.png)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/queue.png)
 
 - 进行插入的一端称为队尾(rear)，插入动作称为进队或入队
 - 进行删除的一端称为对头(front)，删除动作称为出队
@@ -11,7 +11,7 @@
 
 ### 环形队列
 
-![](imgs/ring_queue.png)
+![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/ring_queue.png)
 
 **环形队列：当队尾指针front == Maxsize+1时，再前进一个位置自动到0.**
 
