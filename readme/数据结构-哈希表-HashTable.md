@@ -3,14 +3,14 @@
 
 - 假设有一个长度为7的数组，哈希函数h(k)=k%7。元素集合{14,22,3,5}的存储方式如下图
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/hashtable_01.png) 
+![](static/imgs/hashtable_01.png) 
 
 ## 哈希冲突
 由于哈希表的大小是有限的，而要存储的值的总数量是无限的，因此对于任何哈希函数，都会出现两个不同元素映射到同一个位置上的情况，这种情况叫做哈希冲突。
 
 - 比如h(k)=k%7, h(0)=h(7)=h(14)=...
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/hashtable_02.png)
+![](static/imgs/hashtable_02.png)
 
 ## 解决哈希冲突
 
@@ -23,7 +23,7 @@
 ### 拉链法
 拉链法：哈希表每个位置都连接一个链表，当冲突发生时，冲突的元素将被加到该位置链表的最后
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/hashtable_03.png)
+![](static/imgs/hashtable_03.png)
 
 ## 常见哈希函数
 - 除法哈希法：h(k) = k%m

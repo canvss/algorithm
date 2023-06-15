@@ -1,12 +1,12 @@
 # 链表
 **链表是由一系列节点组成的元素集合。每个节点包含两部分，数据域item和指向下一个节点的指针next。通过节点之间的互相连接，最终串联成一个链表。**
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/linked_list.png)
+![](static/imgs/linked_list.png)
 
 ### 创建链表
 - **头插法**
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/linklist_head.png)
+![](static/imgs/linklist_head.png)
 
 ```python
 def create_linklist_head(li):
@@ -20,7 +20,7 @@ def create_linklist_head(li):
 
 - **尾插法**
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/linked_list_tail.png)
+![](static/imgs/linked_list_tail.png)
 
 ```python
 def create_linklist_tail(li):
@@ -35,7 +35,7 @@ def create_linklist_tail(li):
 
 ### 链表的插入和删除
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/linked_list_insert.png)
+![](static/imgs/linked_list_insert.png)
 
 ```python
 # 查找到链表中值的对象
@@ -53,7 +53,7 @@ def insert_node(val_lk, node):
 
 ```
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/linked_list_delete.png)
+![](static/imgs/linked_list_delete.png)
 
 ```python
 # 删除链表中的对象
@@ -68,7 +68,7 @@ def delete_node(lk, value):
 ## 双向链表
 **双链表的每个节点有两个指针：一个指向后一个节点，另一个指向前一个节点。**
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/double_linked_list.png)
+![](static/imgs/double_linked_list.png)
 
 ```python
 class Node:

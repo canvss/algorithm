@@ -1,7 +1,7 @@
 # 树的概念
 **树（Tree）是一种抽象数据类型，或是实现这种抽象数据类型的数据结构，用来模拟具有树状结构性质的数据集合。一般由N个有限节点组合，具有层次关系。**
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/tree.png)
+![](static/imgs/tree.png)
 
 **树是一种可以递归定义的数据结构**
 
@@ -30,14 +30,14 @@
 
   若设二叉树的深度为h，除第h层外，其他各层（1～（h-1）层）的节点树都达到最大个数，第h层所有的节点都连续集中在最左边，这就是完全二叉树
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/tree-1.png)
+![](static/imgs/tree-1.png)
 
 ### 二叉树的存储方法（表示方式）
 - **链式存储方式**
 
 - **顺序存储方式**
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/Figure-A7-Binary-tree-data-generating-structure-Note-that-the-tree-data-structure-is.png)
+![](static/imgs/Figure-A7-Binary-tree-data-generating-structure-Note-that-the-tree-data-structure-is.png)
 
 子节点和父节点的关系
 - 父节点计算左子节点：**2i+1**
@@ -115,7 +115,7 @@ G.rchild = F
 
 首先访问根节点，然后遍历左子树，最后遍历右子树。
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/pre_order_traversal.gif)
+![](static/imgs/pre_order_traversal.gif)
 ```python
 def pre_order(root):
     if root:
@@ -128,7 +128,7 @@ def pre_order(root):
 
 先遍历左子树，然后访问根节点，然后遍历右子树。
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/in_order_traversal.gif)
+![](static/imgs/in_order_traversal.gif)
 ```python
 def in_order(root):
     if root:
@@ -141,7 +141,7 @@ def in_order(root):
 
 是先遍历左子树，然后遍历右子树，最后访问树的根节点。
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/post_order_traversal.gif)
+![](static/imgs/post_order_traversal.gif)
 ```python
 def post_order(root):
     if root:
@@ -154,7 +154,7 @@ def post_order(root):
 
 层序遍历就是逐层遍历树结构。
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/level_order_traversal.gif)
+![](static/imgs/level_order_traversal.gif)
 
 ```python
 def level_order(root):
@@ -172,13 +172,13 @@ def level_order(root):
 ## 二叉搜索树 
 **二叉查找树（Binary Search Tree），（又：二叉搜索树，二叉排序树）它或者是一棵空树，或者是具有下列性质的二叉树： 若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子树也分别为二叉排序树。二叉搜索树作为一种经典的数据结构，它既有链表的快速插入与删除操作的特点，又有数组快速查找的优势；所以应用十分广泛，例如在文件系统和数据库系统一般会采用这种数据结构进行高效率的排序与检索操作。**
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/bst.png)
+![](static/imgs/bst.png)
 
 ### 二叉搜索树 -- 插入
 
 二叉搜索树中的新节点总是添加到叶子位置。执行搜索可以轻松找到新节点的位置。
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/bst_insert.png)
+![](static/imgs/bst_insert.png)
 
 ```python
     def insert(self, node, val):
@@ -199,7 +199,7 @@ def level_order(root):
 - 如果值小于当前节点，左移
 - 如果值大于当前节点，向右移动
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/bst_query.png)
+![](static/imgs/bst_query.png)
 ```python
     def query(self, node, val):
         if not node:    # 判断空树
@@ -220,7 +220,7 @@ def level_order(root):
 
    操作方法：直接删除
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/bst_delete-01.png)
+![](static/imgs/bst_delete-01.png)
 
 ```python
     def __remove_node_leaf(self, node):
@@ -236,7 +236,7 @@ def level_order(root):
 
      操作方法：将此节点的父亲与孩子连接，然后删除该节点
 
-  ![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/bst_delete-02.png)
+  ![](static/imgs/bst_delete-02.png)
 
 ```python
     def __remove_node_lchild(self, node):
@@ -265,7 +265,7 @@ def level_order(root):
   
      操作方法：将其右子树最小节点删除，替换到当前节点
 
-  ![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/bst_delete-03.png)
+  ![](static/imgs/bst_delete-03.png)
 
 ```python
     def delete(self, val):
@@ -307,7 +307,7 @@ AVL树具有一下性质：
 - **根的左右子树的高度之差的绝对值不能超过1**
 - **根的左右子树都是平衡二叉树**
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/avl_tree.png)
+![](static/imgs/avl_tree.png)
 
 ### AVL树 --插入
 - 插入一个节点可能会破坏AVL树的平衡，可以通过旋转操作来进行修正。
@@ -317,21 +317,21 @@ AVL树具有一下性质：
 #### 左旋
 不平衡是由于对K的右孩子的右子树插入导致的：左旋
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/avl_left.png)
+![](static/imgs/avl_left.png)
 
 
 #### 右旋
 不平衡是由于对K的左孩子的左子树插入导致的：右旋
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/avl_right.png)
+![](static/imgs/avl_right.png)
 
 
 #### 右旋->左旋
 不平衡是由对K的右孩子的左子树插入导致的
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/avl_right_left.png)
+![](static/imgs/avl_right_left.png)
 
 #### 左旋->右旋
 不平衡是由于对K的左孩子的右子树插入导致的
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/avl_left_right.png)
+![](static/imgs/avl_left_right.png)

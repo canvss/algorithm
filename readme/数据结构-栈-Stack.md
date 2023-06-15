@@ -14,7 +14,7 @@
 ## 栈的实现
 **使用一般的列表结构即可实现栈**
 
-![](https://canvs.oss-cn-chengdu.aliyuncs.com/canvs_typora/algorithm/stack.gif)
+![](static/imgs/stack.gif)
 
 ```python
 class Stack:
